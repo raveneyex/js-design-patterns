@@ -1,0 +1,11 @@
+{
+    "name": "js-patterns-workshop",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "start": "http-server . && open "
+    },
+    "dependencies": {
+        "http-server": "^0.11.1"
+    }
+}

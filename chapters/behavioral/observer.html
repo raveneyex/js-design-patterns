@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Patterns: Observer Pattern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+</head>
+<body class="container">
+    <h1 class="title">Observer Pattern</h1>
+    <h4 class="subtitle">Open the Dev tools!</h4>
+    <script type="text/javascript">
+        class Subject {
+            constructor(id) {
+                this.id = id;
+                this.observers = [];
+            }
+
+            register(observer) {
+                this.observers = [...this.observers, observer];
+                console.log(`${observer.id} is now registered to ${this.id}`);
+            }
+
+            deregister(observer) {
+                this.observers = this.observers.filter((obs) => obs.id !== observer.id);
+                console.log(`${observer.id} is now deregistered from ${this.id}`);
+            }
+
+            notify(data) {
+                let payload = { id: this.id, data};
+                this.observers.forEach((observer) => {
+                    observer.update(payload);
+                });
+            }
+        }
+
+        class Cyborg {
+            constructor(id) {
+                this.id = id;
+            }
+
+            update(payload) {
+                console.log(`${this.id} has received the following update: ${payload.data} from ${payload.id}`);
+            }
+        }
+
+        const subject = new Subject('Body Enhancements');
+        const observer1 = new Cyborg('molly millions');
+        const observer2 = new Cyborg('johnny mnemonic');
+        const observer3 = new Cyborg('Automatic Jack');
+
+        console.groupCollapsed('Body Enhancements Black Market')
+        subject.register(observer1);
+        subject.register(observer2);
+        subject.notify('Some mirrorshades implants are available. No serial number.');
+
+        subject.deregister(observer1);
+        subject.register(observer3);
+
+        subject.notify('Some secondhand retractile claws are available');
+        console.groupEnd();
+                
+    </script>
+</body>
+</html>

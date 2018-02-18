@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    background-color: black;
+}
+
+.container h1 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.container h4 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.container .title,
+.container .subtitle {
+    color: white;
+    text-align: center;
+    flex: 1 1 auto;
+    margin-bottom: 25px;
+
+    font-family: "Whitney Cond A", "Whitney Cond B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+    text-shadow: 1px 1px 3px white;
+}
+
+.container .subtitle {
+    margin-top: 10px;
+}
+
+.container .index {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1 1 auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.container .index > .item {
+    background: tomato;
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    margin-top: 30px;
+    line-height: 150px;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    
+}
+
+.container .index > .item:hover {
+    box-shadow: 1px 1px 3px 1px tomato;
+    text-shadow: 1px 1px 3px white;
+}
+
+.container .index > .item > a,
+.container .index > .item > a:hover {
+    color: white;
+    text-decoration: none
+}
+
+.container .index > .item > a:hover {
+    text-shadow: 1px 1px 3px white;
+}

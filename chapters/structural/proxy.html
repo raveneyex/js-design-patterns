@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Patterns: Proxy Pattern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+</head>
+<body class="container">
+    <h1 class="title">Proxy Pattern</h1>
+    <h4 class="subtitle">Open the Dev tools!</h4>
+    <script type="text/javascript">
+        class Calculator{
+            factorial(number) {   
+                return number <=2 ? number : number * this.factorial(number - 1)
+            }
+        }
+
+        class CalcProxy{
+            constructor(){
+                this.calulator = new Calculator();
+                this.factorialcache = {};
+            }
+            factorial (number) {
+                if (!this.factorialcache[number]) {
+                    console.log('Defining for', number);
+                    this.factorialcache[number] = this.calulator.factorial(number);
+                }
+                return this.factorialcache[number];
+            }
+        }
+        let calP = new CalcProxy();
+        console.log('6! = ', calP.factorial(6));
+        console.log('8! = ', calP.factorial(8));
+        console.log('6! = ', calP.factorial(6));
+    </script>
+</body>
+</html>

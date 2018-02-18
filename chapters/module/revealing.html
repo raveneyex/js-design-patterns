@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Patterns: Revealing Module Pattern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+</head>
+<body class="container">
+    <h1 class="title">Revealing Module</h1>
+    <h4 class="subtitle">Open the Dev tools!</h4>
+    <script type="text/javascript">
+        const module = (function() {
+            let secretVar = 'A Secret';
+            
+            function functionOne() {
+                return 'One';
+            }
+
+            function functionTwo() {
+                return 'Two';
+            }
+
+            function getSecret() {
+                return secretVar;
+            }
+
+            return {
+                one: functionOne,
+                two: functionTwo,
+                secret: getSecret
+            };
+        })();
+        console.groupCollapsed('Module Operations');
+        console.log('Function One:', module.one());
+        console.log('Function Two:', module.two());
+        console.log('Get Secret:', module.secret());
+        console.groupEnd();
+    </script>
+</body>
+</html>

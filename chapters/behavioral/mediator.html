@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Patterns: Mediator Pattern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+</head>
+<body class="container">
+    <h1 class="title">Mediator Pattern</h1>
+    <h4 class="subtitle">Open the Dev tools!</h4>
+    <script type="text/javascript">
+        class Participant {
+            constructor(name){
+                this.name = name;
+                this.chatroom = null;
+            }
+
+            send(message, to) {
+                this.chatroom.send(message, this, to);
+            }
+
+            receive(message, from) {
+                console.log(`from ${from.name} to ${this.name}: ${message}`);
+            }
+        }
+
+        let Chatroom = (function() {
+            var participants = {};
+
+            function register(participant) {
+                participants[participant.name] = participant;
+                participant.chatroom = this;
+            }
+
+            function send(message, from, to) {
+                if (to) {                      
+                    to.receive(message, from);    
+                } else {
+                    Object.keys(participants)
+                        .filter((participant) => participant !== from.name)
+                        .forEach((participant) => {
+                            participants[participant].receive(message, from);
+                        });
+                }
+            }
+ 
+            return {
+                register,
+                send
+            };
+        })();
+
+        let satan = new Participant('Satan');
+        let god = new Participant('God');
+        let adam = new Participant('Adam');
+        Chatroom.register(satan);
+        Chatroom.register(god);
+        Chatroom.register(adam);
+        
+        god.send('Let there be light');
+        satan.send("Shut up. I'm trying to sleep.", god);
+    </script>
+</body>
+</html>

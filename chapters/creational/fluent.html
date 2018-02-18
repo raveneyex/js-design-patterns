@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Patterns: Fluent Pattern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+</head>
+<body class="container">
+    <h1 class="title">Fluent Pattern</h1>
+    <h4 class="subtitle">Open the Dev tools!</h4>
+    <script type="text/javascript">
+        class Cyborg {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+                this.skills = [];
+            }
+            
+            sayHi() {
+                console.log(`Hi, my name is ${this.name}`);
+                return this;
+            }
+
+            sayAge() {
+                console.log(`And my age is ${this.age}`);
+                return this;
+            }
+
+            addSkill(skill) {
+                this.skills = [...this.skills, skill];
+                return this;
+            }
+
+            saySkills() {
+                console.log('And I have the following upgrades')
+                this.skills.forEach((skill) => {
+                    console.log(skill);
+                });
+            }
+        }
+        console.info("Cyborg's methods are now fluent, test 'em out!");
+        
+        console.groupCollapsed('Molly Instance');
+        let molly = new Cyborg('Molly', undefined);
+        molly
+            .sayHi()
+            .sayAge()
+            .addSkill('Blade Nails')
+            .addSkill('Enhanced Reflexes')
+            .addSkill('Mirror Shade Vision Enhancement')
+            .saySkills();
+        console.groupEnd();
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Patterns: Module Pattern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+</head>
+<body class="container">
+    <h1 class="title">Module Pattern</h1>
+    <h4 class="subtitle">Open the Dev tools!</h4>
+    <script type="text/javascript">
+        const module = (function() {
+            let mod = {};
+            let secretVar = 'A Secret';
+            function privateFunction() {
+                console.log('This is a private function');
+            };
+
+            mod.getSecret = () => {
+                return secretVar;
+            };
+            mod.publicFunction = () => {
+                console.log('This is a public fn');
+            };
+            mod.publicFunction2 = () => {
+                console.log('Public Function 2');
+                privateFunction();
+            };
+            mod.fn3 = () => {
+                console.log('FN3');
+                mod.publicFunction2();
+            }
+            return mod;
+        })();
+        console.groupCollapsed('Module operations');
+        console.log('The module', module);
+        console.log('Trying to access secretVar property:', module.secretVar);
+        console.log('Properly accesing secretVar:', module.getSecret());
+        console.log('Trying to override secretVar:', module.secretVar = 'Override');
+        console.log('Accesing secretVar:', module.getSecret());
+        console.log('Accessing public method:');
+        module.publicFunction();
+        module.publicFunction2();
+        module.fn3();
+        // console.log('Trying to access private method:', module.privateFunction());
+        console.groupEnd();
+    </script>
+</body>
+</html>

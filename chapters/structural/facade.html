@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Patterns: Facade Pattern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+</head>
+<body class="container">
+    <h1 class="title">Facade Pattern</h1>
+    <h4 class="subtitle">Open the Dev tools!</h4>
+    <script type="text/javascript">
+        class SonicRifle {
+            constructor() {
+                this.charged = false;
+            }
+            charge() {
+                console.log('Charging Blast...');
+                this.charged = true;
+            }
+            shoot() {
+                if(!this.charged) {
+                    this.charge();
+                }
+                console.log('Sonic Blast!!');
+                this.charged = false;
+            }
+        }
+        class Revolver {
+            constructor() {
+                this.loads = 6;
+            }
+            load() {
+                this.loads = 6;
+            }
+            shoot() {
+                if (this.loads > 0) {
+                    this.loads -= 1;
+                    console.log('Pew Pew!');
+                } else {
+                    console.log('Out of Ammo');
+                }
+            }
+        }
+        
+        class Cyborg {
+            constructor(name) {
+                this.name = name;
+                this.rifle = new SonicRifle();
+                this.revolver = new Revolver();
+            }
+            sonicBlast() {
+                this.rifle.shoot();
+            }
+            shoot() {
+                this.revolver.shoot();
+            }
+        }
+
+        console.groupCollapsed('A Cyborg shooting...');
+        const johnny = new Cyborg('Johnny');
+        johnny.sonicBlast();
+        johnny.shoot();
+        johnny.shoot();
+        johnny.shoot();
+        johnny.shoot();
+        johnny.shoot();
+        johnny.shoot();
+        johnny.shoot();
+        console.groupEnd();
+    </script>
+</body>
+</html>

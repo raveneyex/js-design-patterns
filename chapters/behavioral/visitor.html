@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Patterns: Visitor Pattern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+</head>
+<body class="container">
+    <h1 class="title">Visitor Pattern</h1>
+    <h4 class="subtitle">Open the Dev tools!</h4>
+    <script type="text/javascript">
+        class Visitor {
+            visit(person) {
+                console.log('Visiting:', person.name)
+                //Do something with person...
+            }
+        }
+        class Cyborg {
+            constructor(name) {
+                this.name = name;
+            }
+            accept(visitor) {
+                visitor.visit(this);
+            }
+        }
+        let molly = new Cyborg('molly');
+        let visitor = new Visitor();
+        molly.accept(visitor);
+    </script>
+</body>
+</html>
