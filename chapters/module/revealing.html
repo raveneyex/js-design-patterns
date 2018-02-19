@@ -14,33 +14,7 @@
         <li class="nav_item"><a href="/chapters/module/module.html"><span class="label">Module Patterns</span></a></li>
     </ul>
     <h4 class="subtitle">Open the Dev tools!</h4>
-    <script type="text/javascript">
-        const module = (function() {
-            let secretVar = 'A Secret';
-            
-            function functionOne() {
-                return 'One';
-            }
-
-            function functionTwo() {
-                return 'Two';
-            }
-
-            function getSecret() {
-                return secretVar;
-            }
-
-            return {
-                one: functionOne,
-                two: functionTwo,
-                secret: getSecret
-            };
-        })();
-        console.groupCollapsed('Module Operations');
-        console.log('Function One:', module.one());
-        console.log('Function Two:', module.two());
-        console.log('Get Secret:', module.secret());
-        console.groupEnd();
+    <script src="revealing.js">
     </script>
 </body>
 </html>

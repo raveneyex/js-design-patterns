@@ -14,55 +14,6 @@
         <li class="nav_item"><a href="/chapters/behavioral/behavioral.html"><span class="label">Behavioral Patterns</span></a></li>
     </ul>
     <h4 class="subtitle">Open the Dev tools!</h4>
-    <script type="text/javascript">
-        class Iterator {
-            constructor(items) {
-                this.items = items;
-                this.index = 0;
-            }
-
-            first() {
-                this.reset();
-                return this.next();
-            }
-
-            next() {
-                return this.items[this.index++];
-            }
-
-            hasNext() {
-                return this.index <= this.items.length;
-            }
-
-            reset() {
-                this.index = 0;
-            }
-
-            each(callback) {
-                for (let item = this.first(); this.hasNext(); item = this.next()) {
-                    callback(item);
-                }
-            }
-        }
-        const items = ['one','two','three','four'];
-        var iter = new Iterator(items);
-        console.groupCollapsed('Iterator Operations');
-        console.log(iter.first());
-        console.groupCollapsed('Iterating items');
-        iter.each((item) => {
-            console.log(item);
-        });
-        console.groupEnd();
-        console.groupEnd();
-        
-        let count = {
-            *[Symbol.iterator]() {
-                let index = 0;
-                for (;;) {
-                    yield index++;
-                }
-            }
-        }
-    </script>
+    <script src="iterator.js"></script>
 </body>
 </html>
