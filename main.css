@@ -1,5 +1,7 @@
 html {
     font-family: "Whitney Cond A", "Whitney Cond B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+    color: white;
+    background-color: black;
 }
 
 .container {
@@ -8,7 +10,6 @@ html {
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
-    background-color: black;
 }
 
 .container h1 {
@@ -26,7 +27,7 @@ html {
     color: white;
     text-align: center;
     flex: 1 1 auto;
-    margin-bottom: 25px;
+    margin-top: 0px;
 
     font-family: "Whitney Cond A", "Whitney Cond B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
     text-shadow: 1px 1px 3px white;
