@@ -15,6 +15,7 @@ html {
 .container h1 {
     font-size: 4rem;
     font-weight: 700;
+    margin-bottom: 0px;
 }
 
 .container h4 {
@@ -89,6 +90,8 @@ html {
 
     list-style: none;
     justify-content: center;
+    padding: 0;
+    margin-bottom: 0;
 }
 
 .navigation .nav_item .label {
@@ -105,5 +108,10 @@ html {
 .navigation > .nav_item:last-child::after {
     color: white;
     content: '';
+}
+
+.content .headline {
+    font-style: italic;
+    text-align: center;
 }
 
