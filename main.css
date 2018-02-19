@@ -1,3 +1,7 @@
+html {
+    font-family: "Whitney Cond A", "Whitney Cond B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+}
+
 .container {
     display: flex;
     width: 85%;
@@ -58,13 +62,18 @@
     
 }
 
+.navigation > .nav_item:hover,
+.container .index > .item:hover {
+    text-shadow: 1px 1px 3px white;
+}
 .container .index > .item:hover {
     box-shadow: 1px 1px 3px 1px tomato;
-    text-shadow: 1px 1px 3px white;
 }
 
 .container .index > .item > a,
-.container .index > .item > a:hover {
+.container .index > .item > a:hover,
+.navigation > .nav_item > a,
+.navigation > .nav_item > a:hover {
     color: white;
     text-decoration: none
 }
@@ -72,3 +81,28 @@
 .container .index > .item > a:hover {
     text-shadow: 1px 1px 3px white;
 }
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+
+    list-style: none;
+    justify-content: center;
+}
+
+.navigation .nav_item .label {
+    font-size: 1.3em;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navigation > .nav_item::after {
+    color: white;
+    content: '>';
+}
+.navigation > .nav_item:last-child::after {
+    color: white;
+    content: '';
+}
+
