@@ -25,6 +25,7 @@ class Cyborg {
         this.skills.forEach((skill) => {
             console.log(skill);
         });
+        return this.skills;
     }
 }
 console.info("Cyborg's methods are now fluent, test 'em out!");
