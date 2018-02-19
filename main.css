@@ -110,8 +110,14 @@ html {
     content: '';
 }
 
+.content {
+    text-align: center;
+}
+
 .content .headline {
     font-style: italic;
     text-align: center;
+    text-shadow: 1px 1px 3px white;
+    margin-top: 0;
 }
 
